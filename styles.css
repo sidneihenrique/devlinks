@@ -39,7 +39,7 @@ body * {
 #container {
     width:                  100%;
     max-width:              500px;
-    margin:                 56px auto 0px;
+    margin:                 32px auto 0;
     padding:                0 24px;
 }
 
@@ -66,8 +66,13 @@ body * {
 }
 
 .light #switch button {
-    right:      0;
-    left:       initial;
+    animation: slide-in 0.4s forwards;
+
+}
+
+#switch button:hover {
+    outline: 8px solid var(--highlight-color);
+    cursor: pointer;
 }
 
 #switch button {
@@ -83,6 +88,8 @@ body * {
     z-index:   1;
     transform: translateY(-50%);
 
+    animation: slide-out 0.4s forwards;
+
 }
 
 #switch span {
@@ -90,7 +97,7 @@ body * {
     width:   64px;
     height:  24px;
 
-    background: var(--surface-color);
+    background:              var(--surface-color);
 
     border:                  1px solid var(--stroke-color);
     backdrop-filter:         blur(4px);
@@ -100,7 +107,7 @@ body * {
 }
 
 ul {
-    list-style:              none;
+    list-style:     none;
 
     display:        flex;
     flex-direction: column;
@@ -110,11 +117,11 @@ ul {
 }
 
 ul li a{
-    display:         flex;
-    align-items:     center;
-    justify-content: center;
+    display:          flex;
+    align-items:      center;
+    justify-content:  center;
     
-    padding:         16px 24px;
+    padding:          16px 24px;
 
     background:       var(--surface-color);
     border:           1px solid var(--stroke-color);
@@ -163,6 +170,8 @@ footer {
     font-size:  14px;
 }
 
+/* Media queries */
+
 @media (min-width: 720px) {
     :root {
         --bg-url: url(./assets/bg-desktop.jpg)
@@ -170,5 +179,26 @@ footer {
 
     .light {
         --bg-url: url(./assets/bg-desktop-light.jpg)
+    }
+}
+
+/* Animations */
+
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        left: 50%;
+    }
+
+    to {
+        left: 0;
     }
 }
